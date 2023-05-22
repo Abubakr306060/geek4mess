@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}
+Удалить запись?
+{% endblock %}
+{% block content %}
+    <p>Вы уверены, что хотите удалить запись?</p>
+<form action="{% url 'post-delete' post.id %}" method="post">
+    {% csrf_token %}
+    <button type="submit">Удалить запись</button>
+    </form>
+    <br>
+    <a href="{% url 'post-detail' post.id %}"><button>Назад</button></a><br>
+    
+
+    <a href="{% url 'index-page' %}"><- Назад</a>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}
+    Главная страница
+{% endblock %}
+{% block content %}
+<h1>Главная страница</h1>
+
+
+{% for post in posts %}
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">{{ post.title }}</h5>
+    <h6 class="card-subtitle mb-2 text-body-secondary">{{ post.get_category_display }} - {{ post.created }}</h6>
+    <p class="card-text">{{ post.content|truncatewords:8 }}</p>
+    <a href="{% url 'post-detail' post.id %}" class="card-link">Читать далее -></a>
+
+  </div>
+</div>
+    <br>
+{% endfor %}
+    <a href="{% url 'post-create' %}"><button>Создать запись</button></a><br>
+<a href="{% url 'contacts-page' %}">Контакты</a>
+<br>
+<a href="{% url 'about-page' %}">О нас</a>
+<br>
+{% endblock %}
